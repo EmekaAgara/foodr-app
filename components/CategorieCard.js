@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function CategorieCard({title,title2}) {
   return (
-      <TouchableOpacity>
-        <Text className=" mr-2 py-3 px-5 text-white bg-black rounded-full ">
+      <TouchableOpacity className="overflow-hidden">
+        <Text className="inline-block mr-2 py-4 px-5  text-white bg-black rounded-lg ">
           {title}
         </Text>
       </TouchableOpacity>
