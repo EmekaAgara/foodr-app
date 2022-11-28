@@ -1,7 +1,8 @@
-import { Image, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import {MapPin,UserIcon,ChevronDownIcon,AdjustmentsIcon, MapPinIcon, ChatBubbleBottomCenterIcon, AdjustmentsVerticalIcon, BellAlertIcon, CheckBadgeIcon, MagnifyingGlassIcon} from "react-native-heroicons/outline"
+import Categories from '../components/Categories'
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -31,7 +32,7 @@ const HomeScreen = () => {
         />
       </View>
 
-      <View className="flex-row items-center space-x-2 pb-2 mx-4">
+      <View className="flex-row items-center space-x-2 pb-4 mx-4">
         <View className="flex-row flex-1 space-x-2 rounded-md bg-gray-100 p-3.5">
           <MagnifyingGlassIcon color="#9ca3af" size={20}/>
           <TextInput
@@ -40,6 +41,10 @@ const HomeScreen = () => {
           />
         </View>
       </View>
+
+      <ScrollView className="bg-gray-100">
+        <Categories/>
+      </ScrollView>
     </SafeAreaView>
   )
 }
