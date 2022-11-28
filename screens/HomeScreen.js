@@ -3,6 +3,7 @@ import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import {MapPin,UserIcon,ChevronDownIcon,AdjustmentsIcon, MapPinIcon, ChatBubbleBottomCenterIcon, AdjustmentsVerticalIcon, BellAlertIcon, CheckBadgeIcon, MagnifyingGlassIcon} from "react-native-heroicons/outline"
 import Categories from '../components/Categories'
+import FeaturedRow from '../components/FeaturedRow'
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -41,9 +42,36 @@ const HomeScreen = () => {
           />
         </View>
       </View>
+      <View>
+        <Categories/>
+      </View>
 
       <ScrollView className="bg-gray-100">
-        <Categories/>
+        <FeaturedRow
+          id="1234"
+          title="Reccommended Resturants"
+          description="Locations near you"
+          featuredCategory="featured"
+        />
+        <FeaturedRow
+          id="123"
+          title="Best Discounts"
+          description="Locations near you"
+          featuredCategory="featured"
+        />
+        <FeaturedRow
+          id="12"
+          title="Near You"
+          description="Locations near you"
+          featuredCategory="featured"
+        />
+        <FeaturedRow
+          id="1"
+          title="Favorites"
+          description="Locations near you"
+          featuredCategory="featured"
+        />
+
       </ScrollView>
     </SafeAreaView>
   )
