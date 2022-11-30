@@ -1,12 +1,15 @@
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import {MapPin,UserIcon,ChevronDownIcon,AdjustmentsIcon, MapPinIcon, ChatBubbleBottomCenterIcon, AdjustmentsVerticalIcon, BellAlertIcon, CheckBadgeIcon, MagnifyingGlassIcon} from "react-native-heroicons/outline"
 import Categories from '../components/Categories'
 import FeaturedRow from '../components/FeaturedRow'
+import sanityClient from "../sanity"
+
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [featuredCategories, setFeaturedCategories] = useState([])
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -14,6 +17,29 @@ const HomeScreen = () => {
     });
 
   }, []);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `
+          *[_type == "featured"] {
+            ...,
+            restaurants[]->{
+              ...,
+              dishes[]->
+            }
+          }
+        
+        `
+      )
+      .then((data) => {
+        setFeaturedCategories(data);
+      });
+  },  []);
+
+
+
+  // console.log(featuredCategories);
 
   return (
     <SafeAreaView className="bg-white p-10 ">
@@ -47,13 +73,17 @@ const HomeScreen = () => {
       </View>
 
       <ScrollView className="bg-gray-100">
-        <FeaturedRow
-          id="1234"
-          title="Reccommended Resturants"
-          description="Locations near you"
-          featuredCategory="featured"
-        />
-        <FeaturedRow
+        {featuredCategories?.map((category) => (
+          <FeaturedRow
+            id={category._id}
+            key={category._id}
+            title={category.name}
+            description={category.short_description}
+          />
+        ))}
+
+
+        {/* <FeaturedRow
           id="123"
           title="Best Discounts"
           description="Locations near you"
@@ -70,7 +100,7 @@ const HomeScreen = () => {
           title="Favorites"
           description="Locations near you"
           featuredCategory="featured"
-        />
+        /> */}
 
       </ScrollView>
     </SafeAreaView>

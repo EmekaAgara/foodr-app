@@ -17,12 +17,12 @@ export default {
       },
 
       {
-        name: 'resturants',
-        title: 'Resturants',
+        name: 'restaurants',
+        title: 'Restaurants',
         type: 'array',
-        of:[{type:"reference", to:[{type:"resturant"}]}]
+        of:[{type:"reference", to:[{type:"restaurant"}]}],
       },
 
-    ]
+    ],
   
   }

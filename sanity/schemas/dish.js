@@ -17,7 +17,7 @@ export default {
     },
     {
       name: 'price',
-      title: 'Short DPriceof the dish in NGN',
+      title: 'Price the dish in NGN',
       type: 'number',
     },
     {

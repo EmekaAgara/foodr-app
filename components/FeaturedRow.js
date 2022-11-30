@@ -1,9 +1,40 @@
 import { View, Text, ScrollView, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { EllipsisVerticalIcon } from 'react-native-heroicons/outline'
 import ResturantCard from './ResturantCard'
+import sanityClient from "../sanity"
+
+
 
 const FeaturedRow = ({ id, title, description}) => {
+  const [restaurants, setRestaurants] = useState([]);
+  
+  
+  useEffect(() => {
+    sanityClient.fetch(
+      
+      `
+      *[_type == "featured" && _id == $id] {
+        ...,
+        restaurants[]->{
+          ...,
+          dishes[]->,
+          type->{
+            name
+          }
+        },
+      }[0]
+      `,
+      {id}
+    
+    )
+    .then((data) => {
+      setRestaurants(data?.restaurants);
+    });
+  },  []);
+  console.log(restaurants);
+
+
   return (
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
@@ -19,90 +50,26 @@ const FeaturedRow = ({ id, title, description}) => {
         showsHorizontalScrollIndicator={false}
         className="pt-4">
         
-        <ResturantCard
-            id={19}
-            fee="N300"
-            title="test title"
-            imgUrl="https://emekaagara.com/wp-content/uploads/2021/06/emeka.jpg"
-            rating={4.5}
-            genre="Nigerian"
-            address="lekki lagos Nigeria"
-            short_description="TEST THE DESCRIPTION"
-            dishes={[]}
-            long={20}
-            lat={10}
-        />
 
+        {restaurants?.map((restaurant) => (
         <ResturantCard
-            id={19}
-            fee="N300"
-            title="test title"
-            imgUrl="https://emekaagara.com/wp-content/uploads/2021/06/emeka.jpg"
-            rating={4.5}
-            genre="Nigerian"
-            address="lekki lagos Nigeria"
-            short_description="TEST THE DESCRIPTION"
-            dishes={[]}
-            long={20}
-            lat={10}
-        />
-        <ResturantCard
-            id={19}
-            fee="N300"
-            title="test title"
-            imgUrl="https://emekaagara.com/wp-content/uploads/2021/06/emeka.jpg"
-            rating={4.5}
-            genre="Nigerian"
-            address="lekki lagos Nigeria"
-            short_description="TEST THE DESCRIPTION"
-            dishes={[]}
-            long={20}
-            lat={10}
-        />
-        <ResturantCard
-            id={19}
-            fee="N300"
-            title="test title"
-            imgUrl="https://emekaagara.com/wp-content/uploads/2021/06/emeka.jpg"
-            rating={4.5}
-            genre="Nigerian"
-            address="lekki lagos Nigeria"
-            short_description="TEST THE DESCRIPTION"
-            dishes={[]}
-            long={20}
-            lat={10}
-        />
-        <ResturantCard
-            id={19}
-            fee="N300"
-            title="test title"
-            imgUrl="https://emekaagara.com/wp-content/uploads/2021/06/emeka.jpg"
-            rating={4.5}
-            genre="Nigerian"
-            address="lekki lagos Nigeria"
-            short_description="TEST THE DESCRIPTION"
-            dishes={[]}
-            long={20}
-            lat={10}
-        />
-        <ResturantCard
-            id={19}
-            fee="N300"
-            title="test title"
-            imgUrl="https://emekaagara.com/wp-content/uploads/2021/06/emeka.jpg"
-            rating={4.5}
-            genre="Nigerian"
-            address="lekki lagos Nigeria"
-            short_description="TEST THE DESCRIPTION"
-            dishes={[]}
-            long={20}
-            lat={10}
+          id={restaurant.id}
+          key={restaurant.id}
+          fee="N300"
+          title={restaurant.name}
+          imgUrl={restaurant.image}
+          rating={restaurant.rating}
+          genre={restaurant.type?.name}
+          address={restaurant.address}
+          short_description={restaurant.short_description}
+          // dishes={[]}
+          // long={20}
+          // lat={10}
         />
 
 
-            
-
-            
+          
+        ))}
 
         </ScrollView>
     </View>
