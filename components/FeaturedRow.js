@@ -62,13 +62,10 @@ const FeaturedRow = ({ id, title, description}) => {
           genre={restaurant.type?.name}
           address={restaurant.address}
           short_description={restaurant.short_description}
-          // dishes={[]}
-          // long={20}
-          // lat={10}
-        />
-
-
-          
+          dishes={[restaurant.dishes]}
+          long={restaurant.long}
+          lat={restaurant.lat}
+        /> 
         ))}
 
         </ScrollView>
