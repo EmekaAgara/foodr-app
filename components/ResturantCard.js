@@ -3,10 +3,16 @@ import React from 'react'
 import { StarIcon } from 'react-native-heroicons/solid'
 import { BanknotesIcon, ClockIcon, MapPinIcon } from 'react-native-heroicons/outline'
 import { urlFor } from '../sanity'
+import { useNavigation } from '@react-navigation/native'
 
 const ResturantCard = ({id,fee,imgUrl,title,rating,genre,address,short_description,dishes,long,lat}) => {
-  return (
-    <TouchableOpacity className="bg-white mr-3 shadow rounded-md">
+    const navigation = useNavigation();
+    return (
+    <TouchableOpacity
+        onPress={() => {
+            navigation.navigate("Restaurant", {id,fee,imgUrl,title,rating,genre,address,short_description,dishes,long,lat});
+        }}
+    className="bg-white mr-3 shadow rounded-md">
         <Image
             source={{
                 // uri:imgUrl,
