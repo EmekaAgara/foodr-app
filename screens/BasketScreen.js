@@ -71,6 +71,26 @@ const BasketScreen = () => {
                     
                 ))}
             </ScrollView>
+            <View className="p-5 bg-white mt-5 space-y-4">
+                <View className="flex-row justify-between">
+                    <Text className="text-gray-400">SubTotal</Text>
+                    <Text className="text-gray-400">N{basketTotal}</Text>
+                </View>
+
+                <View className="flex-row justify-between">
+                    <Text className="text-gray-400">Deliver Fee</Text>
+                    <Text className="text-gray-400">N{300}</Text>
+                </View>
+
+                <View className="flex-row justify-between">
+                    <Text className="text-black-400">Order Total</Text>
+                    <Text className="font-extrabold">N{basketTotal + 300}</Text>
+                </View>
+
+                <TouchableOpacity className="rounded-md bg-red-500 p-4">
+                    <Text className="text-center text-white text-lg font-bold">Confirm Order</Text>
+                </TouchableOpacity>
+            </View>
         </View>
 
     </SafeAreaView>
