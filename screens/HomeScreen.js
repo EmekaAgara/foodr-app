@@ -75,8 +75,8 @@ const HomeScreen = () => {
       <ScrollView className="bg-gray-100">
         {featuredCategories?.map((category) => (
           <FeaturedRow
-            id={category._id}
             key={category._id}
+            id={category._id}
             title={category.name}
             description={category.short_description}
           />
