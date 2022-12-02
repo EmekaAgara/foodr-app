@@ -5,6 +5,7 @@ import { urlFor } from '../sanity';
 import { ArrowLeftIcon,BanknotesIcon, MapPinIcon } from 'react-native-heroicons/outline';
 import { StarIcon } from 'react-native-heroicons/solid';
 import DishRow from '../components/DishRow';
+import BasketIcon from '../components/BasketIcon';
 
 const RestaurantScreen = () => {
     const navigation = useNavigation();
@@ -22,6 +23,8 @@ const RestaurantScreen = () => {
 
 
   return (
+    <>
+    <BasketIcon/>
     <ScrollView>
       <View className="relative">
         <Image
@@ -58,7 +61,7 @@ const RestaurantScreen = () => {
             <Text className="text-gray-500 mt-2 pb-4">{short_description}</Text>
         </View>   
       </View>
-      <View>
+      <View className="pb-36">
       <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
       
       {dishes.map((dish) => (
@@ -73,6 +76,7 @@ const RestaurantScreen = () => {
         ))}
         </View>
     </ScrollView>
+    </>
   )
 }
 
