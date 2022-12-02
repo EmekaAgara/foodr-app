@@ -81,27 +81,6 @@ const HomeScreen = () => {
             description={category.short_description}
           />
         ))}
-
-
-        {/* <FeaturedRow
-          id="123"
-          title="Best Discounts"
-          description="Locations near you"
-          featuredCategory="featured"
-        />
-        <FeaturedRow
-          id="12"
-          title="Near You"
-          description="Locations near you"
-          featuredCategory="featured"
-        />
-        <FeaturedRow
-          id="1"
-          title="Favorites"
-          description="Locations near you"
-          featuredCategory="featured"
-        /> */}
-
       </ScrollView>
     </SafeAreaView>
   )

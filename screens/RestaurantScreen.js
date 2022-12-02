@@ -9,7 +9,7 @@ import DishRow from '../components/DishRow';
 const RestaurantScreen = () => {
     const navigation = useNavigation();
     const{
-        params:{id,fee,imgUrl,title,rating,genre,address,short_description,dishes,long,lat},
+        params:{fee,imgUrl,title,rating,genre,address,short_description,dishes,long,lat},
     
     } = useRoute();
 
@@ -69,13 +69,10 @@ const RestaurantScreen = () => {
             description={dish.short_description}
             price={dish.price}
             image={dish.image}
+            
         />
         ))}
         </View>
-      
-      {/* <View className="flex-row flex-wrap -mx-2"> */}
-
-      {/* </View> */}
     </ScrollView>
   )
 }
