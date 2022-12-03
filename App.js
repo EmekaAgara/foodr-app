@@ -10,7 +10,8 @@ import { store } from './store';
 import BasketScreen from './screens/BasketScreen';
 import PreparingOrderScreen from './screens/PreparingOrderScreen';
 import DeliveryScreen from './screens/DeliveryScreen';
-
+import SplashScreen from './screens/SplashScreen';
+import RemitaPaymentGateway from './screens/RemitaPaymentGateway';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,16 +20,23 @@ export default function App() {
     <NavigationContainer>
       <Provider store={store}>
         <Stack.Navigator>
+        <Stack.Screen name='SplashScreen' component={SplashScreen}
+            options={{ headerShown:false}}
+          />
           <Stack.Screen name='Home' component={HomeScreen}/>
           <Stack.Screen name='Restaurant' component={RestaurantScreen}/>
           <Stack.Screen name='Basket' component={BasketScreen}
             options={{presentation:'modal', headerShown:false}}
           />
+          <Stack.Screen name='RemitaPaymentGateway' component={RemitaPaymentGateway}
+            options={{presentation:'modal', headerShown:false}}
+          />
+
           <Stack.Screen name='PreparingOrderScreen' component={PreparingOrderScreen}
             options={{presentation:'fullScreenModal', headerShown:false}}
           />
 
-            <Stack.Screen name='Delivery' component={DeliveryScreen}
+          <Stack.Screen name='Delivery' component={DeliveryScreen}
             options={{presentation:'fullScreenModal', headerShown:false}}
           />
         

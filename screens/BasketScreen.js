@@ -90,6 +90,9 @@ const BasketScreen = () => {
                 <TouchableOpacity onPress={() => navigation.navigate("PreparingOrderScreen")} className="rounded-md bg-red-500 p-4">
                     <Text className="text-center text-white text-lg font-bold">Confirm Order</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate("RemitaPaymentGateway")} className="rounded-md bg-red-500 p-4">
+                    <Text className="text-center text-white text-lg font-bold">Pay With Remita</Text>
+                </TouchableOpacity>
             </View>
         </View>
 
