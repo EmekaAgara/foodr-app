@@ -61,6 +61,18 @@ const DeliveryScreen = () => {
             pinColor="#FF0000"
             />
           </MapView>
+          <SafeAreaView className="bg-white flex-row items-center space-x-5 h-28">
+          <Image source={{uri:"https://emekaagara.com/wp-content/uploads/2021/06/emeka.jpg",}}
+           className="h-12 w-12 bg-gray-200 p-4 rounded-full ml-5"
+            />
+
+            <View className="flex-1">
+              <Text className="text-lg">Emeka Agara</Text>
+              <Text className="text-gray-400">Your Delivery Guy</Text>
+            </View>
+            <Text className="text-red-400 text-lg mr-5">Contact</Text>
+            
+          </SafeAreaView>
     </View>
   )
 }
